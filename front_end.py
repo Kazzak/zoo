@@ -2,7 +2,7 @@
 from Tkinter import *
 import tkMessageBox as messagebox # Importa la caja de texto
 import ttk
-#from back_end import insertar
+from back_end import *
 
 master = Tk()
 
@@ -13,15 +13,15 @@ def registraDatos(raza,edad,genero,nombre, ecosistema, comida):
             messagebox.showwarning("¡Alerta!",
                                            "Debes ingresar todos los datos")
     else:
-        #insertar(raza, edad, genero, nombre, ecosistema, comida)
-        print(raza, edad, genero, nombre, ecosistema, comida)
+        insertar(raza, edad, genero, nombre, ecosistema, comida)
+        #print(raza, edad, genero, nombre, ecosistema, comida)
         #Mensaje de respuesta
         messagebox.showwarning("¡Aviso!",
                                         "Datos registrados con exito")
 
 def consultaDatos(raza,edad,genero,nombre, ecosistema, comida):
-    #insertar(raza, edad, genero, nombre, ecosistema, comida)
-    print(raza, edad, genero, nombre, ecosistema, comida) 
+    consultar([raza, edad, genero, nombre, ecosistema, comida])
+    #print(raza, edad, genero, nombre, ecosistema, comida)
 
 def gui():
 
