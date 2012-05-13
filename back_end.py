@@ -26,16 +26,21 @@ def insertar(raza,edad,genero,nombre,ecosistema,comida):
 	print("se inserto la vara")
 	
 	
-def consultar(lista):
+def consultar(lista, res):
 	#['perro', '12', Variable(19), Variable(20), 'cartago', 'queso']
 	for i in range(0, len(lista)):
 		if lista[i] == "":
 			lista[i]= variables[i]
 	q = Query(animal(lista[0],lista[1],lista[2],lista[3],lista[4],lista[5]))
 	while q.nextSolution():
-		for i in range(0,len(variables)):
-			print(variables[i].value)
+		print ("se imprimira un resultado")
+		for i in range(0,len(res)):
+			if res[i] == "":
+				print(variables[i].value)
+			else:
+				print(res[i])
 	q.closeQuery()
+	##jajaja
 	
 	
 	
