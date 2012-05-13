@@ -1,8 +1,9 @@
 from Tkinter import *
 import ttk
+from back_end import insertar
 
 def datos(raza,edad,genero,nombre, ecosistema, comida):
-    print(raza, edad, genero, nombre, ecosistema, comida)
+    insertar(raza, edad, genero, nombre, ecosistema, comida)
 
 def gui():
     master = Tk()
@@ -54,7 +55,7 @@ def gui():
     notebook.add(frame1, text='Mantenimiento')
     notebook.add(frame2, text='Consulta')
 
-    master.title('Zoo')
+
     master.geometry('370x300')
     master.mainloop()
 
