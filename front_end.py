@@ -20,7 +20,7 @@ def registraDatos(raza,edad,genero,nombre, ecosistema, comida):
                                         "Datos registrados con exito")
 
 def consultaDatos(raza,edad,genero,nombre, ecosistema, comida):
-    consultar([raza, edad, genero, nombre, ecosistema, comida])
+    consultar([raza, edad, genero, nombre, ecosistema, comida],[raza, edad, genero, nombre, ecosistema, comida] )
     #print(raza, edad, genero, nombre, ecosistema, comida)
 
 def gui():
