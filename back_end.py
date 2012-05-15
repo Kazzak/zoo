@@ -23,7 +23,7 @@ animal = Functor("animal", 6)
 def insertar(raza,edad,genero,nombre,ecosistema,comida):
 	#se inserta el animal
 	call(assertz(animal(raza,edad,genero,nombre,ecosistema,comida)))
-	print("se inserto la vara")
+	#print("se inserto el animal")
 	
 	
 def consultar(lista, res):
@@ -31,16 +31,20 @@ def consultar(lista, res):
 	for i in range(0, len(lista)):
 		if lista[i] == "":
 			lista[i]= variables[i]
+	matriz = []
 	q = Query(animal(lista[0],lista[1],lista[2],lista[3],lista[4],lista[5]))
 	while q.nextSolution():
-		print ("se imprimira un resultado")
+		sublista = []
 		for i in range(0,len(res)):
 			if res[i] == "":
-				print(variables[i].value)
+				##print(variables[i].value)
+				sublista.append(variables[i].value)
 			else:
-				print(res[i])
+				##print(res[i])
+				sublista.append(res[i])
+		matriz.append(sublista)
 	q.closeQuery()
-	##jajaja
+	return matriz
 	
 	
 	

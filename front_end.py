@@ -2,10 +2,34 @@
 from Tkinter import *
 import tkMessageBox as messagebox # Importa la caja de texto
 import ttk
+import sys
 from back_end import *
 
 master = Tk()
 
+
+##funcion para mostrar los resultados
+def mostrarResultados(matriz):
+	top=Toplevel()
+	top.geometry("500x300")
+	posicionX = 5
+	posicionY = 5
+	contDatos = 6
+	for j in matriz:
+		for h in j:
+			#print(h)
+			if (contDatos == 6):
+				dato = Label (top, text="Resultado:").place(x=posicionX, y=posicionY)
+				posicionY = posicionY+30
+				dato = Label (top, text=h).place(x=posicionX, y=posicionY )
+				posicionY = posicionY+30
+				contDatos=1
+			else:
+				dato = Label (top, text=h).place(x=posicionX, y=posicionY )
+				posicionY = posicionY+30
+				contDatos=contDatos+1
+
+##Funcion para registrar los datos en la base de conocimientos
 def registraDatos(raza,edad,genero,nombre, ecosistema, comida):
     if ( (raza == "") or (edad == "") or (genero == "") or (nombre == "")
         or (ecosistema == "") or (comida == "") ):
@@ -16,12 +40,22 @@ def registraDatos(raza,edad,genero,nombre, ecosistema, comida):
         insertar(raza, edad, genero, nombre, ecosistema, comida)
         #print(raza, edad, genero, nombre, ecosistema, comida)
         #Mensaje de respuesta
-        messagebox.showwarning("¡Aviso!",
+        messagebox.showinfo("¡Aviso!",
                                         "Datos registrados con exito")
 
 def consultaDatos(raza,edad,genero,nombre, ecosistema, comida):
-    consultar([raza, edad, genero, nombre, ecosistema, comida],[raza, edad, genero, nombre, ecosistema, comida] )
-    #print(raza, edad, genero, nombre, ecosistema, comida)
+	matriz = []
+	#matriz.append(["raza","edad","genero","nombre", "ecosistema", "comida"])
+	resultado = consultar([raza,edad,genero,nombre, ecosistema, comida],
+						  [raza,edad,genero,nombre, ecosistema, comida])
+	for i in resultado:
+		matriz.append(i)
+		
+	##codigo para imprimir los resultados de la busqueda
+	#for j in matriz:
+		#for h in j:
+			#print(h)
+	mostrarResultados(matriz)
 
 def gui():
 
